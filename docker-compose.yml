@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  fastapi:
+    container_name: fastapi
+    build: .
+    volumes:
+      - ./:/app
+    networks:
+      - fastapiNet
+
+networks:
+  fastapiNet:
+    driver: bridge
