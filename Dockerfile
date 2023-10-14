@@ -12,4 +12,6 @@ RUN apk update \
 
 COPY . .
 
+RUN pip install app
+
 CMD ["tail", "-f", "/dev/null"]
