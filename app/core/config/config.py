@@ -1,9 +1,11 @@
-from app.config.base.dbconfig import DBConfig
+from app.core.config.appconfig import AppConfig
+from app.core.config.dbconfig import DBConfig
 
 
 class Config:
     _instance = None
 
+    app: AppConfig
     db: DBConfig
 
     def __new__(cls):
@@ -12,4 +14,5 @@ class Config:
         return cls._instance
 
     def load(self, config: dict):
+        self.app = AppConfig(**config["app"])
         self.db = DBConfig(**config["db"])
