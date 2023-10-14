@@ -9,6 +9,8 @@ setup(
     packages=['app'],
     python_requires='>=3.11',
     install_requires=[
+        "SQLAlchemy==2.0.22",
+        "asyncpg==0.28.0",
     ],
     extras_require={
         'dev': [],
