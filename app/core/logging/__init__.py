@@ -13,7 +13,8 @@ LOG_LEVEL_CRITICAL = logging.CRITICAL
 class LoguruHandler(logging.Handler):
     def emit(self, record):
         level = logger.level(record.levelname).name
-        logger.opt(depth=6, exception=record.exc_info).log(level, record.getMessage())
+        logger.opt(
+            depth=6, exception=record.exc_info).log(level, record.getMessage())
 
 
 def load_logging_handlers(packages: List[str], level=logging.INFO):
