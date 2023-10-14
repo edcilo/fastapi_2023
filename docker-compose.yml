@@ -6,6 +6,11 @@ services:
     build: .
     volumes:
       - ./:/app
+    env_file:
+      - .env
+    networks:
+      - fastapiNet
+
     networks:
       - fastapiNet
 
