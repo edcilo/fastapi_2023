@@ -1,5 +1,11 @@
 class DBConfig:
-    def __init__(self, engine, host, port, dbname, user, password):
+    def __init__(self,
+                 engine: str,
+                 host: str,
+                 port: str,
+                 dbname: str,
+                 user: str,
+                 password) -> None:
         self.engine = engine
         self.host = host
         self.port = port
@@ -9,10 +15,10 @@ class DBConfig:
         self.url = self.get_url()
 
     def get_url(self):
-        if self.engine == "postgresql":
-            return self.get_postgresql_url()
+        if self.engine == "postgres":
+            return self.get_postgres_url()
 
-    def get_postgresql_url(self):
+    def get_postgres_url(self):
         return "postgresql+asyncpg://%s:%s@%s:%s/%s" % (
             self.user,
             self.password,

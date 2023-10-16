@@ -7,7 +7,7 @@ configuration = {
         "environment": os.environ.get("APP_ENV", "development"),
     },
     "db": {
-        "engine": os.environ.get("DB_ENGINE", "postgresql"),
+        "engine": os.environ.get("DB_ENGINE", "sqlite"),
         "host": os.environ.get("DB_HOST", "localhost"),
         "port": os.environ.get("DB_PORT", "5432"),
         "dbname": os.environ.get("DB_NAME", "postgres"),
