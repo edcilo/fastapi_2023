@@ -1,2 +1,2 @@
-from app.models.model import *
-from app.models.foo import *
+from .model import *
+from .task import *

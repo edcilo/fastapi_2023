@@ -1,8 +1,8 @@
 from loguru import logger
 
-from app.config import configuration as app_config
-from app.core.config import config
-from app.core.logging import (
+from ..config import configuration as app_config
+from .config import config
+from .logging import (
     LOG_LEVEL_INFO, LOG_LEVEL_WARNING, load_logging_handlers)
 
 

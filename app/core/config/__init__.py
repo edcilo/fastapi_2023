@@ -1,3 +1,3 @@
-from app.core.config.config import Config
+from .config import Config
 
 config = Config()

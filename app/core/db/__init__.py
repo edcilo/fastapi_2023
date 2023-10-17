@@ -3,14 +3,20 @@ import asyncio
 from loguru import logger
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from app.core.config import config
-from app.models import Base
+from ..config import config
+from ...models import Base
 
-engine = create_async_engine(config.db.url, echo=True)
-Session = async_sessionmaker(engine, expire_on_commit=False)
+
+def get_session():
+    engine = create_async_engine(config.db.url, echo=True)
+    Session = async_sessionmaker(engine, expire_on_commit=False)
+    return engine, Session
 
 
 async def get_db():
+    engine, Session = get_session()
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
     db = Session()
     try:
         yield db
@@ -20,6 +26,7 @@ async def get_db():
 
 async def migrate(drop_all: bool = False):
     logger.info("🚀 Migrating database")
+    engine, _ = get_session()
     async with engine.begin() as conn:
         if drop_all:
             logger.warning("⚠️  Dropping all tables")
@@ -33,5 +40,17 @@ async def migrate(drop_all: bool = False):
         pass
 
 
+async def drop_all():
+    engine, _ = get_session()
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+        await conn.commit()
+        await conn.close()
+
+
 def migrate_sync(drop_all: bool = False):
     asyncio.run(migrate(drop_all))
+
+
+def drop_all_sync():
+    asyncio.run(drop_all())

@@ -1,3 +1,3 @@
-from app.core import new_app
+from .core import new_app
 
 app = new_app()

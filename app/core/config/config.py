@@ -1,5 +1,5 @@
-from app.core.config.appconfig import AppConfig
-from app.core.config.dbconfig import DBConfig
+from .appconfig import AppConfig
+from .dbconfig import DBConfig
 
 
 class Config:

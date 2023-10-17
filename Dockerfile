@@ -12,6 +12,10 @@ RUN apk update \
 
 COPY . .
 
+RUN pip install -U \
+    pytest \
+    pytest-asyncio
+
 RUN pip install .
 
 CMD ["tail", "-f", "/dev/null"]
