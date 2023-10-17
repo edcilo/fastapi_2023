@@ -5,6 +5,7 @@ __pycache__
 *.egg-info
 
 .env
+.coverage
 
 .DS_Store
 

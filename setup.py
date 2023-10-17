@@ -19,7 +19,8 @@ setup(
     extras_require={
         "dev": [
             "pytest==7.4.2",
-            "pytest-asyncio==0.21.1"
+            "pytest-asyncio==0.21.1",
+            "pytest-cov==4.1.0",
         ],
     },
 )

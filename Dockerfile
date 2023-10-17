@@ -14,7 +14,8 @@ COPY . .
 
 RUN pip install -U \
     pytest \
-    pytest-asyncio
+    pytest-asyncio \
+    pytest-cov
 
 RUN pip install .
 
