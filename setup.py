@@ -8,8 +8,8 @@ setup(
     description="FastAPI boilerplate",
     author="edcilo",
     author_email="me@edcilo.com",
-    package_dir={"": "src"},
-    packages=find_packages(where="src"),
+    package_dir={"": "app"},
+    packages=find_packages(where="app"),
     python_requires=">=3.11",
     install_requires=[
         "asyncpg==0.28.0",
